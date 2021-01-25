@@ -24,7 +24,7 @@ def user(request):
         			{"name":"name","name_pt":"Nome","type":"text","value":""},        			
         		  ]  
     } 
-    template = loader.get_template('templates/usertasksapi/index.html')      
+    template = loader.get_template('templates/usertasksapi/content.html')      
     return HttpResponse(template.render(context, request))
 
 """def task(request):
@@ -82,5 +82,5 @@ def usertasks(request,user_id):
 
 
 
-    template = loader.get_template('templates/usertasksapi/index.html')
+    template = loader.get_template('templates/usertasksapi/content.html')
     return HttpResponse(template.render(context, request))

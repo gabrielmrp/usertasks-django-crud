@@ -1,7 +1,9 @@
-{% extends 'index.html' %}
+{% extends 'usertasksapi/index.html' %}
 {% block content %}
+{% load static %}
+{% load rest_framework %}
+ 
 
-<body>
 	<!-- Modal -->
 	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
 		<div class="modal-dialog" role="document">
@@ -17,9 +19,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- Navbar -->
-	<div id='entity' class="d-none">{{entity}}</div>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
 		<img src="{% static 'usertasksapi/img/favicon.png' %}" height='45px'> 
 		<button class="navbar-toggler" type="button" 
 		data-toggle="collapse" data-target="#conteudo-navbar" 
@@ -108,8 +109,7 @@
 		{% if r.status == 'pendente' %}
 		<div class="col-md-5">                        
 		</div>   
-		{% endif %} 
-		
+		{% endif %} 		
 	</div>  
 	{% endfor %}
 	{% endif %}  
@@ -170,6 +170,6 @@
 		</div>
 	</div>
 </div>
-</body>  
+
 
 {% endblock %}

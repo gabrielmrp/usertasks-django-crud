@@ -1,44 +1,27 @@
-# 도커 컴포즈 설정을 위한 파이썬/Django 샘플 프로젝트
+Instruções de acesso:
 
-### 요약
+Para acessar o sistema é preciso ter instalado na máquina os seguintes serviços: 
+- Docker
+- Docker Compose
+ 
+$ git clone https://github.com/gabrielmrp/usertasks-django-crud.git
 
-```
-$ git clone https://github.com/raccoonyy/django-sample-for-docker-compose.git
-$ cd django-sample-for-docker-compose
-$ docker-compose up
-```
+Entre na pasta do sistema
 
-### 요구조건
+$ cd usertasks-django-crud
 
-- 도커 엔진 : 1.12.0 이상
-- 도커 컴포즈 : 1.6.0 이상
+Faça a instalação do sistema através do comando abaixo
+  
+$ docker-compose up --build
 
-### 실행
+O comando abaixo deve ser acionado para realizar a migração do banco de dados
 
-1. 저장소 클론
+$ docker-compose run web python3 manage.py migrate
 
-```
-$ git clone https://github.com/raccoonyy/django-sample-for-docker-compose.git
-```
+Encontre o ip da máquina virtual
 
-2. 소스 디렉터리로 이동
+$ docker-machine ip default
 
-```
-$ cd django-sample-for-docker-compose
-```
+Acesse em seu browser o endereço indicado pelo comando abaixo: 
 
-3. 컴포즈로 서비스 실행
-
-```
-$ docker-compose up
-```
-
-### 도커 컴포즈 구성
-
-- docker-compose.yml
-
-도커 컴포즈 명령(`docker-compose`) 실행시 참고하는 설정 모음
-
-- compose/django/Dockerfile-dev
-
-개발용 컨테이너를 만들기 위한 Dockerfile (배포용 Dockerfile과 살짝 다름)
+X.X.X.X:8000
