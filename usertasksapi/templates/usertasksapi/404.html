@@ -1,0 +1,49 @@
+{% extends 'usertasksapi/index.html' %}
+{% block content %}
+{% load static %}
+{% load rest_framework %}
+ 
+
+	 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+		<img src="{% static 'usertasksapi/img/favicon.png' %}" height='45px'> 
+		<button class="navbar-toggler" type="button" 
+		data-toggle="collapse" data-target="#conteudo-navbar" 
+		aria-controls="conteudo-navbar" aria-expanded="false" 
+		aria-label="Ativar navegação">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse m-2" id="conteudo-navbar">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"> 
+				Gerenciamento de Tarefas de Usuários
+			</li>
+		</ul>           
+	</div>
+</nav>
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+	<div >
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="#">Home</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="/user/">Usuário</a>
+			</li>  
+			{% if entity != 'user' %}
+			<li class="breadcrumb-item">
+				{{entity_pt}}
+			</li>    
+			{% endif %}     
+		</ol>
+	</div >
+</nav>
+<!-- Breadcrumbs -->
+<section class="bg-light px-4 mb-2"> 
+	Página não encontrada
+</section>
+
+
+{% endblock %}

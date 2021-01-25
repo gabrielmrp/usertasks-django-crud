@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from .router import router
 from usertasksapi import views
-""" path('task/',views.task, name='task'),"""
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include(router.urls)),
