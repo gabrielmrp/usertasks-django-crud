@@ -1,0 +1,61 @@
+.feito{background: #28a745;color: black}
+.pendente{background: #ffc107;color: black}
+.course{margin:0;} 
+.btn{position: inherit;
+	bottom:inherit;
+	right:   inherit;}
+ 
+.delItem{
+	float: right;
+    
+}
+
+button.btn.btn-xs.edit 
+ {
+    float: right;
+}
+
+body{
+	align-items: inherit;
+}
+
+select option {
+  margin: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+select option[value="feito"] {
+  background: #28a745;
+}
+
+select option[value="pendente"] {
+  background: #ffc107;
+}
+
+select.status{background:#ffc107!important}
+
+*{font-family: Muli}
+
+
+.breadcrumb{background-color: whitesmoke;
+      border-radius: 0;}
+
+li.nav-item {
+    font-size: 20px;
+}
+
+.breadcrumb-item{font-size: 12px}
+
+.course-preview.user:hover{background: #007bff}
+.course-preview.task{padding: 0px 25px 0px 25px;}
+.course-preview > i {zoom:1.8;}
+
+body{display: inherit;}
+
+#divAddEntity{display: none}
+
+a:hover {
+      text-decoration: none;
+  		}

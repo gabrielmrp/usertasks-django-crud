@@ -1,0 +1,175 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<body>
+	<!-- Modal -->
+	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button> 
+				</div>
+				<div class="modal-body">Deseja realmente excluir este item? </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="del">Sim</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Navbar -->
+	<div id='entity' class="d-none">{{entity}}</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+		<img src="{% static 'usertasksapi/img/favicon.png' %}" height='45px'> 
+		<button class="navbar-toggler" type="button" 
+		data-toggle="collapse" data-target="#conteudo-navbar" 
+		aria-controls="conteudo-navbar" aria-expanded="false" 
+		aria-label="Ativar navegação">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse m-2" id="conteudo-navbar">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"> 
+				Gerenciamento de Tarefas de Usuários
+			</li>
+		</ul>           
+	</div>
+</nav>
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+	<div >
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="#">Home</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="/user/">Usuário</a>
+			</li>  
+			{% if entity != 'user' %}
+			<li class="breadcrumb-item">
+				{{entity_pt}}
+			</li>    
+			{% endif %}     
+		</ol>
+	</div >
+</nav>
+<!-- Breadcrumbs -->
+<section class="bg-light px-4 mb-2"> 
+	{{title}}
+</section>
+<!-- Main Content -->
+ <div class="container-fluid">
+	{% if inputs|length > 0 %}
+	{% for r in list %} 
+	<div class="row py-2">            
+		{% if r.status == 'feito' %}
+		<div class="col-md-5">                        
+		</div>   
+		{% endif %}   
+		<div class="col-md-{{ is_task|yesno:'5,8' }}">  
+			<div class="courses-container">
+				<div class="course">
+					{% if entity == 'user' %}
+					<a href="../usertasks/{{r.id}}/">
+						{% endif %}
+						<div class="course-preview {{entity}}">
+							<h6>&nbsp</h6>
+							<i class="fas fa-{{entity}}{{ is_task|yesno:'s,' }}"></i>                  
+						</div>
+						{% if entity == 'user' %}
+					</a>
+					{% endif %}
+					<div class="course-info pb-3 pl-3 pt-3"> 
+						<div>  
+							<a type='button' class="btn btn-danger btn-xs delItem"  href="#" data-toggle="modal" data-target="#delete-modal" itemid="{{r.id}}"><i class="fas fa-trash-alt"></i></a> 
+						</div>
+						<h5>{{r.name}}{{r.description}}</h5>  
+						<h6>{{r.status}}</h6>
+						<div class="inline-flex">  
+							{% if entity == 'task' %}                            
+							<button type="button" class="btn btn-xs edit {{r.status}}"  itemid="{{r.id}}" >
+								{% if r.status == 'pendente' %}  
+								<i class="fas fa-long-arrow-alt-right" title="Marcar como feito"></i>
+								{% else %}
+								<i class="fas fa-long-arrow-alt-left" title="Marcar como pendente"></i>
+								{% endif %} 
+							</button>
+							<form class="form_edit" id="form_edit_{{r.id}}">
+								<input type='hidden' name='status' value='{{r.status}}'>  
+								<input type='hidden' name='id' value='{{r.id}}'>
+								<input type='hidden' name='user' value='{{r.user_id}}'> 
+							</form>                       
+							{% endif %} 
+						</div>
+					</div>
+				</div>
+			</div> 
+		</div>
+		{% if r.status == 'pendente' %}
+		<div class="col-md-5">                        
+		</div>   
+		{% endif %} 
+		
+	</div>  
+	{% endfor %}
+	{% endif %}  
+</div>
+<!-- Add Button -->
+<div class="container-fluid p-4">
+	<div class="row"> 
+		<div class="col-md-2">  
+			<button class="btn btn-primary" id="calladd" title='Adicionar {{entity_pt}}'>
+				<i class="fas fa-plus"></i>
+			</button>
+		</div>
+	</div>
+</div>
+<!-- Add Div -->
+<div class="container-fluid" id='divAddEntity'>
+	<div class="row" id="addEntity"> 
+		<div class="col-md-4"> 
+			<div class="courses-container">
+				<div class="course">
+					<div class="course-preview">
+						<h6>&nbsp</h6>
+						<i class='fas fa-{{entity}} fa-{{entity}}s'></i>
+					</div>
+					<div class="course-info pb-3 pl-3 pt-1"> 
+						<div>  
+							<h4>Adicionar {{entity_pt}}</h4>
+							<form action="" method="post" enctype="application/json" id="formAdd" name="formAdd">
+								<fieldset>
+									{% csrf_token %}
+									{% for i in inputs %} 
+									<div class="form-group">
+										{% if i.type != 'hidden' %}
+										<label>{{i.name_pt}}</label>
+										{% endif %}
+										<input type="{{i.type}}" placeholder="" name="{{i.name}}" value="{{i.value}}" id="{{i.name}}" class="form-control" > 
+									</div>
+									{% endfor %} 
+									{% if entity == 'task' %}
+									<div class="form-group">
+										<label>Status</label> 
+										<select class="form-control status" name="status" form="formAdd" value="pendente" >
+											<option value="pendente" selected><h6>Pendente</h6></option>
+											<option value="feito"><h6>Feito</h6></option>
+										</select>
+									</div>
+									{% endif %} 
+									<div class="form-group">
+										<button type="button" class="btn btn-primary js-tooltip" id="add">Adicionar
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>  
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>  
+
+{% endblock %}

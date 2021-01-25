@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load rest_framework %}
+<head>
+    <!-- Title -->
+  <title>
+      {% block title %}
+      Gerenciamento de Tarefas de Usuários
+      {% endblock %}
+  </title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'usertasksapi/img/favicon.png' %}" type="image/png">
+
+
+  <!-- Arquivos CSS -->
+
+  <!-- Fonte do template: https://freefrontend.com/css-cards/ -->
+  <link rel="stylesheet" href="{% static 'usertasksapi/css/card.css' %}">  
+  <link rel="stylesheet" href="{% static 'usertasksapi/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'usertasksapi/css/master.css' %}">
+  <link rel="stylesheet" href="{% static 'usertasksapi/css/fontawesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'usertasksapi/css/brands.min.css' %}">
+  <link rel="stylesheet" href="{% static 'usertasksapi/css/solid.min.css' %}">
+ 
+</head>
+
+<div id='entity' class="d-none">{{entity}}</div>
+ 
+<!-- Bloco de conteúdo -->
+{% block content %}
+{% endblock %}
+
+<!-- Arquivos necessários para o Bootstrap -->
+<script src="{% static 'usertasksapi/js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'usertasksapi/js/bootstrap.min.js' %}"></script>
+ 
+
+<!-- Scripts -->
+<script src="{% static 'usertasksapi/js/scripts.js' %}"></script>
+
+<script src="{% static 'usertasksapi/js/fontawesome.min.js' %}"></script>
+ 
+</html>
