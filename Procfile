@@ -1,1 +1,1 @@
-gunicorn usertasksapi:app
+web: usertasksapi
