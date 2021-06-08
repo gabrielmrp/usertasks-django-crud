@@ -29,9 +29,9 @@ $ docker-compose run web python3 manage.py migrate
 Acesse através do endereço:
  
 ```
-X.X.X.X:8000
+http://0.0.0.0:8000
 
 ou
 
-http://localhost:8000/
+http://localhost:8000
 ```
