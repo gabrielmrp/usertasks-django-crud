@@ -4,7 +4,6 @@ import django_heroku
 
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 try:
     #test if it is in development
@@ -26,6 +25,9 @@ else:
     SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',env_data['DJANGO_SECRET_KEY'])
 
     DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 ALLOWED_HOSTS = ['*']
 
