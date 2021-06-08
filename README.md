@@ -26,14 +26,12 @@ O comando abaixo deve ser acionado para realizar a migração do banco de dados
 $ docker-compose run web python3 manage.py migrate
 ```
 
-Encontre o ip da máquina virtual
-
-```
-$ docker-machine ip default
-```
-
-Acesse em seu browser o endereço indicado pelo comando abaixo: 
-
+Acesse através do endereço:
+ 
 ```
 X.X.X.X:8000
+
+ou
+
+http://localhost:8000/
 ```
