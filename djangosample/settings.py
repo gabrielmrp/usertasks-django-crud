@@ -27,7 +27,7 @@ else:
 
     DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['sm-usertask.herokuapp','localhost']
+ALLOWED_HOSTS = ['herokuapp','localhost']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
