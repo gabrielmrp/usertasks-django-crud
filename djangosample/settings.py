@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'djangosample.wsgi.application'
 #}
 
 try:
-    infile = open('envy.json', 'r', encoding='utf-8')
+    infile = open('env.json', 'r', encoding='utf-8')
 except IOError:
     env = {
             "NAME":"djangosample",
@@ -82,7 +82,8 @@ except IOError:
             "HOST":"localhost"
           } 
 else:
-    env = json.load(infile)
+    env = django_heroku.settings(locals())
+    #env = json.load(infile)
  
 
 DATABASES = {
@@ -137,5 +138,4 @@ STATICFILES_DIRS = (
 if DEBUG:
     ALLOWED_HOSTS += ['*', ]
 
-print(":::")
-print(django_heroku.settings(locals()))
+ 
