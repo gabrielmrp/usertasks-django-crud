@@ -4,30 +4,11 @@ import django_heroku
 
 
 
-
-try:
-    #test if it is in development
-    env_file = open('.env.json', 'r', encoding='utf-8')
-except IOError:
-    #get production data 
-    env = {
-            "NAME":os.environ["NAME"],
-            "USER":os.environ["USER"],
-            "PASSWORD":os.environ["PASSWORD"],
-            "HOST":os.environ["HOST"]
-          }  
-    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',os.environ["DJANGO_SECRET_KEY"])
-    DEBUG = False
-else:     
-    # get secret key info
-    env_data = json.load(env_file)
-
-    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',env_data['DJANGO_SECRET_KEY'])
-
-    DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ 
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '7ngkdjajhzi2oi+6izsv+!hg5lhdhzb0(d8d(qv11$i=)14n*)')
 
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = ['*']
 
@@ -82,7 +63,7 @@ WSGI_APPLICATION = 'djangosample.wsgi.application'
  
 try:
     #test if it is in development
-    infile = open('.env.json', 'r', encoding='utf-8')
+    infile = open('.env', 'r', encoding='utf-8')
 except IOError:
     #get production data 
     env = {
