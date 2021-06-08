@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io/api/django,python
 
 .env.json
+secret_key.txt
 
 ### Django ###
 *.log
