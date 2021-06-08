@@ -82,8 +82,9 @@ except IOError:
             "HOST":"localhost"
           } 
 else:
-    env = django_heroku.settings(locals())
+    #env = django_heroku.settings(locals())
     #env = json.load(infile)
+    env = os.environ
  
 
 DATABASES = {
