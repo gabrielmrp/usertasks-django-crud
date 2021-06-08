@@ -5,8 +5,14 @@ import django_heroku
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
- 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '7ngkdjajhzi2oi+6izsv+!hg5lhdhzb0(d8d(qv11$i=)14n*)')
+
+try: 
+    secret_key_file = open('secret_key.txt', 'r' )
+    SECRET_KEY = secret_key_file.read()
+except:
+    SECRET_KEY = ''
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',SECRET_KEY)
 
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
@@ -63,7 +69,7 @@ WSGI_APPLICATION = 'djangosample.wsgi.application'
  
 try:
     #test if it is in development
-    infile = open('.env', 'r', encoding='utf-8')
+    infile = open('.env.json', 'r', encoding='utf-8')
 except IOError:
     #get production data 
     env = {
