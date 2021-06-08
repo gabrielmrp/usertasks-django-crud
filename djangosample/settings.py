@@ -60,31 +60,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangosample.wsgi.application'
  
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': os.environ.get('DJANGO_DB_NAME', 'dcchkh7n3uklrv'), #djangosample
-#        'USER': os.environ.get('DJANGO_DB_USERNAME', 'bijwqymaujdomu'), #sampleuser
-#        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', '66a7ae4291273228bc04b4ad394dbad3fa3fa136aa635bda1f34c339445c9a2b'), #samplesecret
-#        'HOST': os.environ.get('DJANGO_DB_HOST', 'ec2-54-225-18-166.compute-1.amazonaws.com'), #localhost
-#        'PORT': os.environ.get('DJANGO_DB_PORT', '5432'), #5432
-#    }
-#}
-
+ 
 try:
-    infile = open('env.json', 'r', encoding='utf-8')
+    infile = open('.env', 'r', encoding='utf-8')
 except IOError:
+    env = os.environ
+else:
     env = {
             "NAME":"djangosample",
             "USER":"sampleuser",
             "PASSWORD":"samplesecret",
             "HOST":"localhost"
-          } 
-else:
-    #env = django_heroku.settings(locals())
-    #env = json.load(infile)
-    env = os.environ
+          }  
+    
  
 
 DATABASES = {
