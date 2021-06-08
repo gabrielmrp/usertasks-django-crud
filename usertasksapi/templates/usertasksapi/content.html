@@ -4,57 +4,7 @@
 {% load rest_framework %}
  
 
-	<!-- Modal -->
-	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button> 
-				</div>
-				<div class="modal-body">Deseja realmente excluir este item? </div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" id="del">Sim</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-		<img src="{% static 'usertasksapi/img/favicon.png' %}" height='45px'> 
-		<button class="navbar-toggler" type="button" 
-		data-toggle="collapse" data-target="#conteudo-navbar" 
-		aria-controls="conteudo-navbar" aria-expanded="false" 
-		aria-label="Ativar navegação">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse m-2" id="conteudo-navbar">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"> 
-				Gerenciamento de Tarefas de Usuários
-			</li>
-		</ul>           
-	</div>
-</nav>
-<!-- Breadcrumbs -->
-<nav aria-label="breadcrumb">
-	<div >
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item">
-				<a href="#">Home</a>
-			</li>
-			<li class="breadcrumb-item">
-				<a href="/user/">Usuário</a>
-			</li>  
-			{% if entity != 'user' %}
-			<li class="breadcrumb-item">
-				{{entity_pt}}
-			</li>    
-			{% endif %}     
-		</ol>
-	</div >
-</nav>
-<!-- Breadcrumbs -->
+
 <section class="bg-light px-4 mb-2"> 
 	{{title}}
 </section>
