@@ -17,7 +17,7 @@ except IOError:
             "PASSWORD":os.environ["PASSWORD"],
             "HOST":os.environ["HOST"]
           }  
-    SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',os.environ["DJANGO_SECRET_KEY"])
     DEBUG = False
 else:     
     # get secret key info
