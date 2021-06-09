@@ -1,4 +1,4 @@
-Gerenciador de tarefas de usuários
+## Gerenciador de tarefas de usuários
 
 Este projeto consiste na simulação de um sistema simples de visualização de tarefas de usuários. Realizam-se operações CRUD em uma API Rest. O sistema foi construído utilizando o framework Django em Python e o banco de dados em postgresql. Foi utilizado, como container da aplicação o Docker.
 
