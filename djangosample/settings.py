@@ -6,10 +6,13 @@ import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 try: 
+    #get secret key hidden in development environment
     secret_key_file = open('secret_key.txt', 'r' )
     SECRET_KEY = secret_key_file.read()
 except:
+    #get secret keys in production
     SECRET_KEY = ''
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',SECRET_KEY)
